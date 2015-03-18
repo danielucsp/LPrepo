@@ -10,8 +10,7 @@
 using namespace std;
 
 
-// camvbios sin overwriting
-// asdsd
+// PRUEBA2
 class Matriz
 {
     vector< vector<string> > horario;
