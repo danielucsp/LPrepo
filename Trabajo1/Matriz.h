@@ -9,12 +9,11 @@
 #include <stdlib.h>
 using namespace std;
 
-
-// PRUEBA2
 class Matriz
 {
-    vector< vector<string> > horario;
     public:
+        vector< vector<string> > horario;
+
         Matriz(char* filename)
         {
             ifstream file;
@@ -79,6 +78,35 @@ class Matriz
             hora = ho + ":" + mi;
             return hora;
         }
+
+        pair<int, int> rango(string hora)
+        {
+            pair<int, int> res;
+            string rango;
+            int i;
+            for(i = 0; hora[i] != '-'; i++)
+                rango.push_back(hora[i]);
+
+            res.first = hora_a_minuto(rango);
+            rango.clear();
+            i++;
+
+            for(i = 0; i < hora.size(); i++)
+                rango.push_back(hora[i]);
+
+            res.second = hora_a_minuto(rango);
+
+            return res;
+        }
+
+        bool buscar_dia(string d)
+        {
+            for(int i = 0; i < horario.size(); i++)
+                if(horario[i][0] == d)
+                    return true;
+            return false;
+        }
+
     protected:
     private:
 };
