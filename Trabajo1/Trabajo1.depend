@@ -11,11 +11,12 @@
 	<string>
 	<stdlib.h>
 
-1426711593 source:c:\users\daniel\desktop\programas u\cursos\lenguajes de programacion\lprepo\trabajo1\main.cpp
+1427021641 source:c:\users\daniel\desktop\programas u\cursos\lenguajes de programacion\lprepo\trabajo1\main.cpp
 	<iostream>
+	<vector>
 	"Matriz.h"
 
-1426714326 c:\users\daniel\desktop\programas u\cursos\lenguajes de programacion\lprepo\trabajo1\matriz.h
+1427010900 c:\users\daniel\desktop\programas u\cursos\lenguajes de programacion\lprepo\trabajo1\matriz.h
 	<iostream>
 	<fstream>
 	<sstream>

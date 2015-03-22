@@ -40,65 +40,6 @@ class Matriz
         }
         virtual ~Matriz(){}
 
-        int hora_a_minuto(string hora)
-        {
-            int minuto = 0;
-            string n;
-            int i;
-            for(i = 0; hora[i] != ':'; i++)
-                n.push_back(hora[i]);
-            int tmp = atoi(n.c_str());
-            tmp = tmp * 60;
-            minuto = minuto + tmp;
-
-            n.clear();
-
-            i++;
-            for(; i < hora.size(); i++)
-                n.push_back(hora[i]);
-            tmp = atoi(n.c_str());
-            minuto = minuto + tmp;
-
-            return minuto;
-        }
-
-        string minuto_a_hora(int minuto)
-        {
-            int h = minuto / 60;
-            int m = minuto % 60;
-            string hora;
-
-            stringstream ssh;
-            stringstream ssm;
-            ssh << h;
-            ssm << m;
-            string ho = ssh.str();
-            string mi = ssm.str();
-
-            hora = ho + ":" + mi;
-            return hora;
-        }
-
-        pair<int, int> rango(string hora)
-        {
-            pair<int, int> res;
-            string rango;
-            int i;
-            for(i = 0; hora[i] != '-'; i++)
-                rango.push_back(hora[i]);
-
-            res.first = hora_a_minuto(rango);
-            rango.clear();
-            i++;
-
-            for(i = 0; i < hora.size(); i++)
-                rango.push_back(hora[i]);
-
-            res.second = hora_a_minuto(rango);
-
-            return res;
-        }
-
         bool buscar_dia(string d)
         {
             for(int i = 0; i < horario.size(); i++)
