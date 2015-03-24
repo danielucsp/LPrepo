@@ -95,7 +95,7 @@ int encontrar_pos_dia(Matriz m, string d)
     return -1;
 }
 
-vector< vector<string> > encontrar_tiempo(vector<Matriz> h)
+vector< vector<string> > encontrar_tiempo(vector<Matriz> h, int minutos)
 {
     vector< vector<string> > res;
 
@@ -121,14 +121,13 @@ vector< vector<string> > encontrar_tiempo(vector<Matriz> h)
             r.push_back(dias[a]);
             res.push_back(r);
 
-            cout << a << endl;
-
             vector< vector< pair<int,int> > > eval;
+            int aa;
 
             for(int i = 0; i < h.size(); i++)
             {
                 vector< pair<int,int> > tmp;
-                int aa = encontrar_pos_dia(h[i], dias[a]);
+                aa = encontrar_pos_dia(h[i], dias[a]);
 
                 for(int j = 1; j < h[i].horario[aa].size(); j++)
                 {
@@ -143,21 +142,23 @@ vector< vector<string> > encontrar_tiempo(vector<Matriz> h)
 
             llenar_vacios(eval);
 
-            for(int i = 0; i < eval.size(); i++)
+            /*for(int i = 0; i < eval.size(); i++)
             {
                 for(int j = 0; j < eval[i].size(); j++)
                     cout << eval[i][j].first << "-" << eval[i][j].second << " ";
                 cout << endl;
             }
 
-            cout << "____________________" << endl;
+            cout << "____________________" << endl;*/
 
             for(int i = 0; i < eval[0].size() && eval[0][i].first != -1 && eval[0][i].second != -1; i++)
             {
                 pair<int,int> interseccion = eval[0][i];
+                //cout << interseccion.first << " " << interseccion.second << endl;
 
                 for(int j = 0; j < eval[0].size(); j++)
                 {
+                    interseccion = eval[0][i];
                     for(int k = 1; k < eval.size(); k++)
                     {
                         if(eval[k][j].first != -1 && eval[k][j].second != -1)
@@ -165,21 +166,20 @@ vector< vector<string> > encontrar_tiempo(vector<Matriz> h)
                             if(eval[k][j].first >= interseccion.first)
                                 interseccion.first = eval[k][j].first;
 
-                            if(eval[k][j].second <= interseccion.second && eval[k][j].second >= interseccion.first)
+                            if(eval[k][j].second <= interseccion.second)
                                 interseccion.second = eval[k][j].second;
+
+                            if(interseccion.first < interseccion.second && abs(interseccion.first - interseccion.second) >= minutos)
+                            {
+                                string h1 = minuto_a_hora(interseccion.first);
+                                string h2 = minuto_a_hora(interseccion.second);
+                                string inter = h1 + "-" + h2;
+
+                                res[res.size()-1].push_back(inter);
+                            }
                         }
                     }
                 }
-
-                if(interseccion.first < interseccion.second)
-                {
-                    string h1 = minuto_a_hora(interseccion.first);
-                    string h2 = minuto_a_hora(interseccion.second);
-                    string inter = h1 + "-" + h2;
-
-                    res[a].push_back(inter);
-                }
-
              }
         }
         else
@@ -206,7 +206,7 @@ int main()
 
     vector< vector<string> > res;
 
-    res = encontrar_tiempo(horarios);
+    res = encontrar_tiempo(horarios, 45);
 
     for(int i = 0; i < res.size(); i++)
     {
