@@ -142,15 +142,6 @@ vector< vector<string> > encontrar_tiempo(vector<Matriz> h, int minutos)
 
             llenar_vacios(eval);
 
-            /*for(int i = 0; i < eval.size(); i++)
-            {
-                for(int j = 0; j < eval[i].size(); j++)
-                    cout << eval[i][j].first << "-" << eval[i][j].second << " ";
-                cout << endl;
-            }
-
-            cout << "____________________" << endl;*/
-
             for(int i = 0; i < eval[0].size() && eval[0][i].first != -1 && eval[0][i].second != -1; i++)
             {
                 pair<int,int> interseccion = eval[0][i];
@@ -193,27 +184,66 @@ vector< vector<string> > encontrar_tiempo(vector<Matriz> h, int minutos)
     return res;
 }
 
+void planificador (vector<Matriz> horarios, int tiempo){
+
+    if(horarios.size()==2){
+      vector< vector<string> > res;
+      res = encontrar_tiempo(horarios, tiempo);
+      for(int i = 0; i < res.size(); i++)
+      {
+         for(int j = 0; j < res[i].size(); j++)
+            cout << res[i][j] << " ";
+            cout << endl;
+      }
+    }
+    else{
+        vector< pair <Matriz,Matriz> > para_proc;
+        vector< vector<string> > res;
+        int tam = 0;
+        while(tam<horarios.size()){
+
+             pair <Matriz, Matriz> par_matriz;
+             Matriz a = horarios[tam];
+             par_matriz.first = a;
+             if(tam==horarios.size()-1){
+                par_matriz.second = horarios[0];
+             }
+             else{
+                par_matriz.second = horarios[tam+1];
+             }
+
+             para_proc.push_back(par_matriz);
+             tam++;
+        }
+        vector <Matriz> schedules;
+        for(int i=0; i<para_proc.size()-1; i++){
+            vector<Matriz> h;
+            pair<Matriz, Matriz> par_hor = para_proc[i];
+            h.push_back(par_hor.first);
+            h.push_back(par_hor.second);
+            res= encontrar_tiempo(h,tiempo);
+            Matriz m_horario(res);
+            schedules.push_back(m_horario);
+        }
+        //cout<<schedules.size()<<endl;
+        if(schedules.size()>= 2){
+           planificador(schedules,tiempo);
+        }
+    }
+}
+
+
+
 int main()
 {
+    int tiempo = 45;
     Matriz a("aa.txt");
     Matriz b("bb.txt");
-    //Matriz c("c.txt");
-
+    Matriz c("c.txt");
     vector<Matriz> horarios;
     horarios.push_back(a);
     horarios.push_back(b);
-    //horarios.push_back(c);
-
-    vector< vector<string> > res;
-
-    res = encontrar_tiempo(horarios, 45);
-
-    for(int i = 0; i < res.size(); i++)
-    {
-        for(int j = 0; j < res[i].size(); j++)
-            cout << res[i][j] << " ";
-        cout << endl;
-    }
-
+    horarios.push_back(c);
+    planificador(horarios, tiempo);
     return 0;
 }
