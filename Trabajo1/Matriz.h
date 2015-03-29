@@ -13,7 +13,10 @@ class Matriz
 {
     public:
         vector< vector<string> > horario;
-
+        Matriz(){}
+        Matriz (vector< vector<string> > h){
+            horario = h;
+        }
         Matriz(char* filename)
         {
             ifstream file;
