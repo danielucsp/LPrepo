@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1427770076 source:c:\users\daniel\desktop\trabajo2\main.cpp
+	<iostream>
+	"Matriz.h"
+
+1427770151 c:\users\daniel\desktop\trabajo2\matriz.h
+	<iostream>
+	<fstream>
+	<sstream>
+	<vector>
+	<string>
+	<stdlib.h>
+
+1427770067 source:c:\users\daniel\desktop\trabajo2\matriz.cpp
+	"Matriz.h"
+

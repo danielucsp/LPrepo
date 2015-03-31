@@ -240,10 +240,12 @@ int main()
     Matriz a("aa.txt");
     Matriz b("bb.txt");
     Matriz c("c.txt");
+    Matriz d("d.txt");
     vector<Matriz> horarios;
     horarios.push_back(a);
     horarios.push_back(b);
     horarios.push_back(c);
+    horarios.push_back(d);
     planificador(horarios, tiempo);
     return 0;
 }
