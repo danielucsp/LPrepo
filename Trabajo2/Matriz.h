@@ -12,7 +12,7 @@ using namespace std;
 class Matriz
 {
     public:
-        vector< vector<string> > tablero;
+        vector< vector<int> > tablero;
 
         Matriz();
         Matriz(char* filename);
@@ -20,6 +20,10 @@ class Matriz
         virtual ~Matriz();
 
         void print();
+        bool tablero_vacio();
+        bool repetido(vector< pair<int,int> > v, int a, int b);
+
+        void encontrar_adyacencia(int x, int y);
 
     protected:
     private:
