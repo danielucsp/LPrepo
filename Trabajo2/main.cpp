@@ -24,8 +24,13 @@ void game(Matriz tablero)
 int main()
 {
     Matriz a("a.txt");
-    a.print();
+    /*a.print();
     a.encontrar_adyacencia(0,0);
     a.print();
+    a.gravedad();
+    a.print();
+    a.juntar_izquierda();
+    a.print();*/
+    game(a);
     return 0;
 }
