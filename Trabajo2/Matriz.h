@@ -24,6 +24,8 @@ class Matriz
         bool repetido(vector< pair<int,int> > v, int a, int b);
 
         void encontrar_adyacencia(int x, int y);
+        void gravedad();
+        void juntar_izquierda();
 
     protected:
     private:

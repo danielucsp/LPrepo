@@ -14,11 +14,11 @@
 1427770067 source:c:\users\daniel\desktop\trabajo2\matriz.cpp
 	"Matriz.h"
 
-1428013606 source:c:\users\daniel\desktop\programas u\cursos\lenguajes de programacion\lprepo\trabajo2\main.cpp
+1428023699 source:c:\users\daniel\desktop\programas u\cursos\lenguajes de programacion\lprepo\trabajo2\main.cpp
 	<iostream>
 	"Matriz.h"
 
-1428012143 c:\users\daniel\desktop\programas u\cursos\lenguajes de programacion\lprepo\trabajo2\matriz.h
+1428018637 c:\users\daniel\desktop\programas u\cursos\lenguajes de programacion\lprepo\trabajo2\matriz.h
 	<iostream>
 	<fstream>
 	<sstream>
@@ -26,6 +26,6 @@
 	<string>
 	<stdlib.h>
 
-1428013557 source:c:\users\daniel\desktop\programas u\cursos\lenguajes de programacion\lprepo\trabajo2\matriz.cpp
+1428023225 source:c:\users\daniel\desktop\programas u\cursos\lenguajes de programacion\lprepo\trabajo2\matriz.cpp
 	"Matriz.h"
 

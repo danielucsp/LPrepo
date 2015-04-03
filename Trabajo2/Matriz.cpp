@@ -36,11 +36,19 @@ void Matriz::print()
     cout << "**************************" << endl;
     for(int i = 0; i < tablero.size(); i++)
     {
+        cout << tablero.size()-1-i << " | ";
         for(int j = 0; j < tablero[i].size(); j++)
             cout << tablero[i][j] << " ";
         cout << endl;
     }
-    cout << endl;
+
+    cout << "--+";
+    for(int i = 0; i < tablero[0].size()*2; i++)
+        cout <<"-";
+    cout << endl << "  | ";
+    for(int i = 0; i < tablero[0].size(); i++)
+        cout << i << " ";
+    cout << endl << endl;
 }
 
 bool Matriz::tablero_vacio()
@@ -137,4 +145,14 @@ void Matriz::encontrar_adyacencia(int x, int y)
 
     for(int a = 0; a < adyacencias.size(); a++)
         tablero[adyacencias[a].first][adyacencias[a].second] = 0;
+}
+
+void Matriz::gravedad()
+{
+
+}
+
+void Matriz::juntar_izquierda()
+{
+
 }
