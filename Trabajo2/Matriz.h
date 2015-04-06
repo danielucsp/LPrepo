@@ -22,6 +22,7 @@ class Matriz
         void print();
         bool tablero_vacio();
         bool repetido(vector< pair<int,int> > v, int a, int b);
+        bool fin();
 
         void encontrar_adyacencia(int x, int y);
         void gravedad();

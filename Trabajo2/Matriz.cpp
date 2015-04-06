@@ -68,6 +68,28 @@ bool Matriz::repetido(vector< pair<int,int> > v, int a, int b)
     return false;
 }
 
+bool Matriz::fin()
+{
+    for (int i = 0 ; i < tablero.size() ; i++)
+    {
+        for (int j = 0 ; j < tablero[i].size() ; j++)
+        {
+            int casilla = tablero[i][j];
+            if(casilla != 0)
+            {
+                if(i + 1 < tablero.size() && tablero[i+1][j] == casilla)
+                    return false;
+                else
+                {
+                    if(j + 1 < tablero[i].size() && tablero[i][j+1] == casilla)
+                        return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
 void Matriz::encontrar_adyacencia(int x, int y)
 {
     vector< pair<int,int> > adyacencias;

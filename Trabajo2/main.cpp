@@ -2,8 +2,40 @@
 #include "Matriz.h"
 
 using namespace std;
+/*
+bool game2(Matriz tablero)
+{
+    int x,y;
+    x = tablero.tablero[1].size()-1;
+    y = 0;
+    while(!tablero.tablero_vacio())
+    {
+        tablero.print();
+        if(tablero.fin())
+        {
+            cout << "----NO SE PUEDEN ELIMINAR MAS BLOQUES----" << endl;
+            cout << "--------------FIN DEL JUEGO--------------" << endl;
+            return false;
+        }
+        if(tablero.tablero[x][y] == 0)
+            y++;
+        tablero.encontrar_adyacencia(x,y);
+        tablero.gravedad();
+        tablero.juntar_izquierda();
+        if(y == tablero.tablero[x].size()-1)
+        {
+            y = 0;
+            x--;
+        }
+    }
 
-void game(Matriz tablero)
+    tablero.print();
+    cout << "-------- FIN!!!!!! --------" << endl;
+    return true;
+}
+*/
+
+bool game(Matriz tablero)
 {
     tablero.gravedad();
     tablero.juntar_izquierda();
@@ -11,6 +43,12 @@ void game(Matriz tablero)
     {
         int x,y;
         tablero.print();
+        if(tablero.fin())
+        {
+            cout << "----NO SE PUEDEN ELIMINAR MAS BLOQUES----" << endl;
+            cout << "--------------FIN DEL JUEGO--------------" << endl;
+            return false;
+        }
         cin >> x >> y;
         tablero.encontrar_adyacencia(x,y);
         tablero.gravedad();
@@ -19,7 +57,9 @@ void game(Matriz tablero)
 
     tablero.print();
     cout << "-------- FIN!!!!!! --------" << endl;
+    return true;
 }
+
 
 int main()
 {
