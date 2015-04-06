@@ -38,8 +38,8 @@ bool game(Matriz tablero)
     return true;
 }
 
-/*
-bool game(Matriz tablero)
+
+/*bool game(Matriz tablero)
 {
     tablero.gravedad();
     tablero.juntar_izquierda();
@@ -62,8 +62,8 @@ bool game(Matriz tablero)
     tablero.print();
     cout << "-------- FIN!!!!!! --------" << endl;
     return true;
-}
-*/
+}*/
+
 
 int main()
 {

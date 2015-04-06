@@ -169,8 +169,9 @@ void Matriz::encontrar_adyacencia(int x, int y)
         tablero[adyacencias[a].first][adyacencias[a].second] = 0;
 }
 
-void Matriz::gravedad()
+/*void Matriz::gravedad()
 {
+    bool cambio = false;
     for(int i = tablero.size()-1 ; i > 0 ; i--)
     {
         for(int j = 0 ; j < tablero[i].size() ; j++)
@@ -179,9 +180,29 @@ void Matriz::gravedad()
             {
                 tablero[i][j] = tablero[i-1][j];
                 tablero[i-1][j] = 0;
+                cambio = true;
             }
         }
     }
+
+    if(cambio)
+        gravedad();
+}*/
+
+void Matriz::gravedad()
+{
+    bool cambio = false;
+
+    for(int i = 0; i < tablero.size()-1; i++)
+        for(int j = 0; j < tablero[i].size(); j++)
+            if(tablero[i][j] != 0 && tablero[i+1][j] == 0)
+            {
+                tablero[i+1][j] = tablero[i][j];
+                tablero[i][j] = 0;
+                cambio = true;
+            }
+    if(cambio)
+        gravedad();
 }
 
 void Matriz::juntar_izquierda()
