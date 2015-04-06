@@ -29,3 +29,14 @@
 1428023225 source:c:\users\daniel\desktop\programas u\cursos\lenguajes de programacion\lprepo\trabajo2\matriz.cpp
 	"Matriz.h"
 
+1428343561 source:c:\users\rossmery\documents\github\lprepo\trabajo2\matriz.cpp
+	"Matriz.h"
+
+1428343561 c:\users\rossmery\documents\github\lprepo\trabajo2\matriz.h
+	<iostream>
+	<fstream>
+	<sstream>
+	<vector>
+	<string>
+	<stdlib.h>
+

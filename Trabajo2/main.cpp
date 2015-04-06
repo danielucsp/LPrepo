@@ -2,11 +2,11 @@
 #include "Matriz.h"
 
 using namespace std;
-/*
-bool game2(Matriz tablero)
+
+bool game(Matriz tablero)
 {
     int x,y;
-    x = tablero.tablero[1].size()-1;
+    x = 0;
     y = 0;
     while(!tablero.tablero_vacio())
     {
@@ -22,19 +22,23 @@ bool game2(Matriz tablero)
         tablero.encontrar_adyacencia(x,y);
         tablero.gravedad();
         tablero.juntar_izquierda();
-        if(y == tablero.tablero[x].size()-1)
+        if(y == (tablero.tablero[x]).size()-1)
         {
+            x++;
             y = 0;
-            x--;
+        }
+        if(y == (tablero.tablero[x]).size()-1 && x == 0)
+        {
+            x = (tablero.tablero).size()-1;
+            y = 0;
         }
     }
-
     tablero.print();
     cout << "-------- FIN!!!!!! --------" << endl;
     return true;
 }
-*/
 
+/*
 bool game(Matriz tablero)
 {
     tablero.gravedad();
@@ -59,7 +63,7 @@ bool game(Matriz tablero)
     cout << "-------- FIN!!!!!! --------" << endl;
     return true;
 }
-
+*/
 
 int main()
 {
