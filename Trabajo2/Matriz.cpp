@@ -90,6 +90,73 @@ bool Matriz::fin()
     return true;
 }
 
+int Matriz::buscar_grupos(int x, int y)
+{
+    vector< pair<int,int> > adyacencias;
+
+    pair<int,int> coor;
+    int X = tablero.size()-1-x;
+    coor.first = X;
+    coor.second = y;
+
+    int color = tablero[X][y];
+    adyacencias.push_back(coor);
+
+    if(adyacencias[0].first-1 >= 0) ///ARRIBA
+    {
+        if(tablero[adyacencias[0].first-1][adyacencias[0].second] == color)
+        {
+            if(!repetido(adyacencias, adyacencias[0].first-1, adyacencias[0].second))
+            {
+                coor.first = adyacencias[0].first-1;
+                coor.second = adyacencias[0].second;
+                adyacencias.push_back(coor);
+            }
+        }
+    }
+
+    if(adyacencias[0].first+1 <= tablero.size()-1) ///ABAJO
+    {
+        if(tablero[adyacencias[0].first+1][adyacencias[0].second] == color)
+        {
+            if(!repetido(adyacencias, adyacencias[0].first+1, adyacencias[0].second))
+            {
+                coor.first = adyacencias[0].first+1;
+                coor.second = adyacencias[0].second;
+                adyacencias.push_back(coor);
+            }
+        }
+    }
+
+    if(adyacencias[0].second-1 >= 0) ///IZQUIERDA
+    {
+        if(tablero[adyacencias[0].first][adyacencias[0].second-1] == color)
+        {
+            if(!repetido(adyacencias, adyacencias[0].first, adyacencias[0].second-1))
+            {
+                coor.first = adyacencias[0].first;
+                coor.second = adyacencias[0].second-1;
+                adyacencias.push_back(coor);
+            }
+        }
+    }
+
+    if(adyacencias[0].second+1 <= tablero[X].size()-1) ///DERECHA
+    {
+        if(tablero[adyacencias[0].first][adyacencias[0].second+1] == color)
+        {
+            if(!repetido(adyacencias, adyacencias[0].first, adyacencias[0].second+1))
+            {
+                coor.first = adyacencias[0].first;
+                coor.second = adyacencias[0].second+1;
+                adyacencias.push_back(coor);
+            }
+        }
+    }
+
+    return adyacencias.size();
+}
+
 void Matriz::encontrar_adyacencia(int x, int y)
 {
     vector< pair<int,int> > adyacencias;
@@ -205,7 +272,7 @@ void Matriz::gravedad()
         gravedad();
 }
 
-void Matriz::juntar_izquierda()
+/*void Matriz::juntar_izquierda()
 {
     for(int i = 0 ; i < tablero.size() ; i++)
     {
@@ -218,4 +285,45 @@ void Matriz::juntar_izquierda()
             }
         }
     }
+}*/
+
+void Matriz::juntar_izquierda()
+{
+    bool cambio = false;
+    bool columna_vacia = true;
+    bool columna_vacia2 = true;
+
+    for(int i = 0; i < tablero[0].size()-1 && !cambio; i++)
+    {
+        for(int j = 0; j < tablero.size(); j++)
+        {
+            if(tablero[j][i] != 0)
+                columna_vacia = false;
+            if(tablero[j][i+1] != 0)
+                columna_vacia2 = false;
+        }
+
+        if(columna_vacia)
+        {
+            if(columna_vacia && !columna_vacia2)
+            {
+                for(int j = 0; j < tablero.size(); j++)
+                {
+                    tablero[j][i] = tablero[j][i+1];
+                    tablero[j][i+1] = 0;
+                }
+
+            cambio = true;
+            break;
+            }
+        }
+        else
+        {
+            columna_vacia = true;
+            columna_vacia2 = true;
+        }
+    }
+
+    if(cambio)
+        juntar_izquierda();
 }

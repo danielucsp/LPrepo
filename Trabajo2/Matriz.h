@@ -27,6 +27,7 @@ class Matriz
         void encontrar_adyacencia(int x, int y);
         void gravedad();
         void juntar_izquierda();
+        int buscar_grupos(int x, int y);
 
     protected:
     private:

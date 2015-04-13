@@ -3,7 +3,7 @@
 
 using namespace std;
 
-bool game(Matriz tablero)
+bool game2(Matriz tablero)
 {
     int x,y;
     x = 0;
@@ -17,20 +17,25 @@ bool game(Matriz tablero)
             cout << "--------------FIN DEL JUEGO--------------" << endl;
             return false;
         }
-        if(tablero.tablero[x][y] == 0)
-            y++;
-        tablero.encontrar_adyacencia(x,y);
-        tablero.gravedad();
-        tablero.juntar_izquierda();
-        if(y == (tablero.tablero[x]).size()-1)
+
+        if(tablero.buscar_grupos(x,y) > 1 && (tablero.tablero[x][y]) != 0)
         {
-            x++;
+            tablero.encontrar_adyacencia((tablero.tablero).size()-1-x,y);
+            tablero.gravedad();
+            tablero.juntar_izquierda();
+            x = 0;
             y = 0;
+            continue;
         }
-        if(y == (tablero.tablero[x]).size()-1 && x == 0)
+        else
         {
-            x = (tablero.tablero).size()-1;
-            y = 0;
+            if(y < (tablero.tablero[0]).size())
+                y++;
+            else
+            {
+                y = 0;
+                x++;
+            }
         }
     }
     tablero.print();
@@ -39,7 +44,7 @@ bool game(Matriz tablero)
 }
 
 
-/*bool game(Matriz tablero)
+bool game(Matriz tablero)
 {
     tablero.gravedad();
     tablero.juntar_izquierda();
@@ -62,7 +67,7 @@ bool game(Matriz tablero)
     tablero.print();
     cout << "-------- FIN!!!!!! --------" << endl;
     return true;
-}*/
+}
 
 
 int main()
@@ -75,6 +80,6 @@ int main()
     a.print();
     a.juntar_izquierda();
     a.print();*/
-    game(a);
+    game2(a);
     return 0;
 }
